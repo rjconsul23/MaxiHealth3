@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sales System</title>
+    <link rel="stylesheet" href="sales2.css">
+    <link rel="icon" href="maxi.jpg">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css" integrity="sha512-Kc323vGBEqzTmouAECnVceyQqyqdsSiqLQISBL29aUW4U/M7pSPA/gEUZQqv1cwx4OnYxTxve5UMg5GT6L4JJg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+</head>
+<body>
+    <div class="sidebar">
+        <div class="logo-section">
+            <img src="maxi3.png" alt="Maxi Health Logo" class="sidebar-logo">
+        </div>
+        <nav class="sidebar-nav">
+            <ul>
+                <li><a href="home.html"><i class="fa-solid fa-house"></i> Home</a></li>
+                <li><a href="monitor.html"><i class="fa-sharp fa-solid fa-bars"></i> Stock Monitoring</a></li>
+                <li><a href="#" class="active"><i class="fa-sharp fa-solid fa-coins"></i> Sales</a></li>
+                <li><a href="receive.html"><i class="fa-sharp fa-solid fa-download"></i> Receiving</a></li>
+                <li><a href="Pcategory.html"><i class="fa-sharp fa-solid fa-bars"></i> Product Category</a></li>
+                <li><a href="Productlist.html"><i class="fa-solid fa-box"></i> Product List</a></li>
+                <li><a href="expiredlist.html"><i class="fa-sharp fa-solid fa-bars"></i> Expired List</a></li>
+                <li><a href="supplier.html"><i class="fa-solid fa-person-chalkboard"></i> Supplier List</a></li>
+            </ul>
+        </nav>
+    </div>
+
+    <div class="main-content">
+        <header class="main-header">
+            <h1>Maxi Health Inventory Management System</h1>
+            <div class="user-info">
+                <i class="fa-solid fa-user"></i>
+                <span>Admin</span>
+            </div>
+        </header>
+
+        <section class="sales-section">
+            <div class="sales-form">
+                <h2>Sales</h2>
+                <div class="form-group">
+                    <label for="product-name">Product Name</label>
+                    <input type="text" id="product-name" placeholder="Enter product name">
+                </div>
+                <div class="form-group">
+                    <label for="quantity">Quantity</label>
+                    <input type="text" id="quantity" placeholder="Enter quantity">
+                </div>
+                <div class="form-group">
+                    <label for="reference-number">Reference Number</label>
+                    <input type="text" id="reference-number" placeholder="Enter reference number">
+                </div>
+                <button class="add-to-list-btn">Add to List</button>
+            </div>
+            <table class="sales-table">
+                <thead>
+                    <tr>
+                        <th>Product Name</th>
+                        <th>Reference No.</th>
+                        <th>Quantity</th>
+                        <th>Price</th>
+                        <th>Amount</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Name: Loperamide 250mg<br>Category: Branded</td>
+                        <td>33401000</td>
+                        <td>10</td>
+                        <td>10</td>
+                        <td>100</td>
+                    </tr>
+                    <tr>
+                        <td colspan="4" class="text-right">Total</td>
+                        <td>100</td>
+                    </tr>
+                </tbody>
+            </table>
+           
+            <button class="pay-btn" onclick="showReceipt()"> Pay</button>
+        </section>
+
+        <div class="modal" id="receipt-modal">
+            <div class="modal-content">
+                <span class="close-btn" onclick="closeReceipt()">&times;</span>
+                <h2>Print</h2>
+                <div class="receipt-content">
+                    <h3>Receipt</h3>
+                    <p>Reference Number: <span id="receipt-reference-number">33401000</span></p>
+                    <p>Date: <span id="receipt-date">June 24, 2024</span></p>
+                    <table class="receipt-table">
+                        <thead>
+                            <tr>
+                                <th>Quantity</th>
+                                <th>Product</th>
+                                <th>Unit Price</th>
+                                <th>Amount</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>10</td>
+                                <td>Name: Loperamide 250mg<br>Category: Branded</td>
+                                <td>10</td>
+                                <td>100</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <p>Total: 100</p>
+                    <p>Amount Tendered: 100</p>
+                    <p>Change: 0</p>
+                </div>
+                <button onclick="printReceipt()">Print</button>
+                <button onclick="newSales()">New Sales</button>
+                <p>This is not an official receipt</p>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function showReceipt() {
+            document.getElementById('receipt-modal').style.display = 'block';
+        }
+
+        function closeReceipt() {
+            document.getElementById('receipt-modal').style.display = 'none';
+        }
+
+        function printReceipt() {
+            // Implement print functionality here
+            window.print();
+        }
+
+        function newSales() {
+            // Implement new sales functionality here
+            document.getElementById('receipt-modal').style.display = 'none';
+        }
+
+        window.onclick = function(event) {
+            var modal = document.getElementById('receipt-modal');
+            if (event.target == modal) {
+                modal.style.display = 'none';
+            }
+        }
+    </script>
+</body>
+</html>
